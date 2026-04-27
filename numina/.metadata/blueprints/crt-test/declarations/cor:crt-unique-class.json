@@ -1,0 +1,11 @@
+{
+  "label": "cor:crt-unique-class",
+  "kind": "corollary",
+  "title": "Unique residue class form of CRT",
+  "uses": [
+    "thm:crt-existence",
+    "thm:crt-uniqueness"
+  ],
+  "statement": "Let $n_1, \\ldots, n_k$ be pairwise coprime integers, set\n    $N = n_1 n_2 \\cdots n_k$, and let $a_1, \\ldots, a_k \\in \\mathbb{Z}$.\n    Then there exists a unique residue class $\\overline{x} \\in \\mathbb{Z}/N\\mathbb{Z}$\n    such that every representative $x \\in \\overline{x}$ satisfies\n    $x \\equiv a_i \\pmod{n_i}$ for every $1 \\leq i \\leq k$.",
+  "proof": "Existence of some $x \\in \\mathbb{Z}$ with $x \\equiv a_i \\pmod{n_i}$ for\n    every $i$ is given by Theorem~\\ref{thm:crt-existence}. If $x'$ is another\n    such integer, then $x \\equiv x' \\pmod{n_i}$ for every $i$, hence by\n    Theorem~\\ref{thm:crt-uniqueness} we have $x \\equiv x' \\pmod N$. Thus the\n    residue class $\\overline{x} \\in \\mathbb{Z}/N\\mathbb{Z}$ is uniquely\n    determined by the data $(a_1, \\ldots, a_k)$."
+}

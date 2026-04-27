@@ -1,0 +1,8 @@
+{
+  "label": "def:coprime",
+  "kind": "definition",
+  "title": "Coprime integers",
+  "uses": [],
+  "statement": "Two integers $a, b \\in \\mathbb{Z}$ are said to be \\emph{coprime} if\n    $\\gcd(a, b) = 1$.",
+  "proof": null
+}

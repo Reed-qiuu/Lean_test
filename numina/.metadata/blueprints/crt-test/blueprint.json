@@ -3,5 +3,36 @@
   "branch": "numina/crt-test",
   "source_type": "",
   "notes": "",
-  "entries": []
+  "entries": [
+    {
+      "label": "def:coprime",
+      "kind": "definition",
+      "title": "Coprime integers"
+    },
+    {
+      "label": "def:pairwise-coprime",
+      "kind": "definition",
+      "title": "Pairwise coprime family"
+    },
+    {
+      "label": "lem:crt-two",
+      "kind": "lemma",
+      "title": "Two-moduli CRT"
+    },
+    {
+      "label": "thm:crt-existence",
+      "kind": "theorem",
+      "title": "General CRT existence"
+    },
+    {
+      "label": "thm:crt-uniqueness",
+      "kind": "theorem",
+      "title": "CRT uniqueness"
+    },
+    {
+      "label": "cor:crt-unique-class",
+      "kind": "corollary",
+      "title": "Unique residue class form of CRT"
+    }
+  ]
 }

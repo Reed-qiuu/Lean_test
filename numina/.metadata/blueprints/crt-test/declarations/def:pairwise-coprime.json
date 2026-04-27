@@ -1,0 +1,10 @@
+{
+  "label": "def:pairwise-coprime",
+  "kind": "definition",
+  "title": "Pairwise coprime family",
+  "uses": [
+    "def:coprime"
+  ],
+  "statement": "A finite family of integers $(n_1, n_2, \\ldots, n_k)$ with $k \\geq 1$ is\n    said to be \\emph{pairwise coprime} if for every pair of indices\n    $i \\neq j$ with $1 \\leq i, j \\leq k$ we have $\\gcd(n_i, n_j) = 1$.",
+  "proof": null
+}

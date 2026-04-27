@@ -1,0 +1,11 @@
+{
+  "label": "thm:crt-existence",
+  "kind": "theorem",
+  "title": "General CRT existence",
+  "uses": [
+    "def:pairwise-coprime",
+    "lem:crt-two"
+  ],
+  "statement": "Let $k \\geq 1$ and let $n_1, n_2, \\ldots, n_k$ be pairwise coprime\n    integers. For any integers $a_1, a_2, \\ldots, a_k$ there exists\n    $x \\in \\mathbb{Z}$ such that\n    \\[\n        x \\equiv a_i \\pmod{n_i} \\quad \\text{for every } 1 \\leq i \\leq k.\n    \\]",
+  "proof": "Induction on $k$. The case $k = 1$ is trivial: take $x = a_1$. Suppose\n    the result holds for $k$ pairwise coprime moduli, and consider $k+1$\n    pairwise coprime moduli $n_1, \\ldots, n_{k+1}$. By the induction\n    hypothesis there exists $y \\in \\mathbb{Z}$ with $y \\equiv a_i \\pmod{n_i}$\n    for $1 \\leq i \\leq k$. Let $M = n_1 n_2 \\cdots n_k$. Since each $n_i$ is\n    coprime to $n_{k+1}$, the product $M$ is also coprime to $n_{k+1}$. By\n    the two-moduli CRT (Lemma~\\ref{lem:crt-two}) applied to the moduli $M$\n    and $n_{k+1}$, there exists $x \\in \\mathbb{Z}$ with $x \\equiv y \\pmod M$\n    and $x \\equiv a_{k+1} \\pmod{n_{k+1}}$. Then for each $1 \\leq i \\leq k$,\n    $n_i \\mid M$ and $x \\equiv y \\equiv a_i \\pmod{n_i}$, while\n    $x \\equiv a_{k+1} \\pmod{n_{k+1}}$ by construction."
+}

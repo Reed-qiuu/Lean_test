@@ -3,6 +3,115 @@
 
 \begin{document}
 
-% Your blueprint will go here.
+\section{Introduction}
+
+The Chinese Remainder Theorem (CRT) is a classical result in elementary number
+theory describing the simultaneous solutions of systems of linear congruences
+with pairwise coprime moduli. This blueprint formalizes the basic statements:
+the two-moduli case, the general existence theorem for $k$ pairwise coprime
+moduli, the uniqueness of the solution modulo the product of the moduli, and
+the corresponding unique residue class characterization.
+
+\section{Coprimality}
+
+\begin{definition}[Coprime integers]
+    \label{def:coprime}
+    Two integers $a, b \in \mathbb{Z}$ are said to be \emph{coprime} if
+    $\gcd(a, b) = 1$.
+\end{definition}
+
+\begin{definition}[Pairwise coprime family]
+    \label{def:pairwise-coprime}
+    \uses{def:coprime}
+    A finite family of integers $(n_1, n_2, \ldots, n_k)$ with $k \geq 1$ is
+    said to be \emph{pairwise coprime} if for every pair of indices
+    $i \neq j$ with $1 \leq i, j \leq k$ we have $\gcd(n_i, n_j) = 1$.
+\end{definition}
+
+\section{Existence}
+
+\begin{lemma}[Two-moduli CRT]
+    \label{lem:crt-two}
+    \uses{def:coprime}
+    Let $m, n \in \mathbb{Z}$ be coprime, i.e.\ $\gcd(m, n) = 1$. For any
+    $a, b \in \mathbb{Z}$ there exists an integer $x \in \mathbb{Z}$ such that
+    \[
+        x \equiv a \pmod{m}, \qquad x \equiv b \pmod{n}.
+    \]
+\end{lemma}
+\begin{proof}
+    \uses{def:coprime}
+    Since $\gcd(m, n) = 1$, by Bézout's identity there exist integers
+    $u, v \in \mathbb{Z}$ with $u m + v n = 1$. Set
+    \[
+        x \;=\; b \cdot u m \;+\; a \cdot v n.
+    \]
+    Reducing modulo $m$ gives $x \equiv a \cdot v n \equiv a \cdot 1 \equiv a
+    \pmod m$, and reducing modulo $n$ gives $x \equiv b \cdot u m \equiv b
+    \cdot 1 \equiv b \pmod n$.
+\end{proof}
+
+\begin{theorem}[General CRT existence]
+    \label{thm:crt-existence}
+    \uses{def:pairwise-coprime, lem:crt-two}
+    Let $k \geq 1$ and let $n_1, n_2, \ldots, n_k$ be pairwise coprime
+    integers. For any integers $a_1, a_2, \ldots, a_k$ there exists
+    $x \in \mathbb{Z}$ such that
+    \[
+        x \equiv a_i \pmod{n_i} \quad \text{for every } 1 \leq i \leq k.
+    \]
+\end{theorem}
+\begin{proof}
+    \uses{lem:crt-two, def:pairwise-coprime}
+    Induction on $k$. The case $k = 1$ is trivial: take $x = a_1$. Suppose
+    the result holds for $k$ pairwise coprime moduli, and consider $k+1$
+    pairwise coprime moduli $n_1, \ldots, n_{k+1}$. By the induction
+    hypothesis there exists $y \in \mathbb{Z}$ with $y \equiv a_i \pmod{n_i}$
+    for $1 \leq i \leq k$. Let $M = n_1 n_2 \cdots n_k$. Since each $n_i$ is
+    coprime to $n_{k+1}$, the product $M$ is also coprime to $n_{k+1}$. By
+    the two-moduli CRT (Lemma~\ref{lem:crt-two}) applied to the moduli $M$
+    and $n_{k+1}$, there exists $x \in \mathbb{Z}$ with $x \equiv y \pmod M$
+    and $x \equiv a_{k+1} \pmod{n_{k+1}}$. Then for each $1 \leq i \leq k$,
+    $n_i \mid M$ and $x \equiv y \equiv a_i \pmod{n_i}$, while
+    $x \equiv a_{k+1} \pmod{n_{k+1}}$ by construction.
+\end{proof}
+
+\section{Uniqueness}
+
+\begin{theorem}[CRT uniqueness]
+    \label{thm:crt-uniqueness}
+    \uses{def:pairwise-coprime}
+    Let $n_1, \ldots, n_k$ be pairwise coprime integers and set
+    $N = n_1 n_2 \cdots n_k$. If $x, y \in \mathbb{Z}$ satisfy
+    $x \equiv y \pmod{n_i}$ for every $1 \leq i \leq k$, then
+    $x \equiv y \pmod{N}$.
+\end{theorem}
+\begin{proof}
+    \uses{def:pairwise-coprime}
+    By hypothesis $n_i \mid (x - y)$ for every $i$. Since the $n_i$ are
+    pairwise coprime, their product $N = \prod_{i=1}^{k} n_i$ also divides
+    $x - y$ (a standard consequence of the fact that if $a$ and $b$ are
+    coprime and both divide $c$, then $ab \mid c$, applied iteratively).
+    Hence $x \equiv y \pmod{N}$.
+\end{proof}
+
+\begin{corollary}[Unique residue class form of CRT]
+    \label{cor:crt-unique-class}
+    \uses{thm:crt-existence, thm:crt-uniqueness}
+    Let $n_1, \ldots, n_k$ be pairwise coprime integers, set
+    $N = n_1 n_2 \cdots n_k$, and let $a_1, \ldots, a_k \in \mathbb{Z}$.
+    Then there exists a unique residue class $\overline{x} \in \mathbb{Z}/N\mathbb{Z}$
+    such that every representative $x \in \overline{x}$ satisfies
+    $x \equiv a_i \pmod{n_i}$ for every $1 \leq i \leq k$.
+\end{corollary}
+\begin{proof}
+    \uses{thm:crt-existence, thm:crt-uniqueness}
+    Existence of some $x \in \mathbb{Z}$ with $x \equiv a_i \pmod{n_i}$ for
+    every $i$ is given by Theorem~\ref{thm:crt-existence}. If $x'$ is another
+    such integer, then $x \equiv x' \pmod{n_i}$ for every $i$, hence by
+    Theorem~\ref{thm:crt-uniqueness} we have $x \equiv x' \pmod N$. Thus the
+    residue class $\overline{x} \in \mathbb{Z}/N\mathbb{Z}$ is uniquely
+    determined by the data $(a_1, \ldots, a_k)$.
+\end{proof}
 
 \end{document}

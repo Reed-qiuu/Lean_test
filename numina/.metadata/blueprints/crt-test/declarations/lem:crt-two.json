@@ -1,0 +1,10 @@
+{
+  "label": "lem:crt-two",
+  "kind": "lemma",
+  "title": "Two-moduli CRT",
+  "uses": [
+    "def:coprime"
+  ],
+  "statement": "Let $m, n \\in \\mathbb{Z}$ be coprime, i.e.\\ $\\gcd(m, n) = 1$. For any\n    $a, b \\in \\mathbb{Z}$ there exists an integer $x \\in \\mathbb{Z}$ such that\n    \\[\n        x \\equiv a \\pmod{m}, \\qquad x \\equiv b \\pmod{n}.\n    \\]",
+  "proof": "Since $\\gcd(m, n) = 1$, by Bézout's identity there exist integers\n    $u, v \\in \\mathbb{Z}$ with $u m + v n = 1$. Set\n    \\[\n        x \\;=\\; b \\cdot u m \\;+\\; a \\cdot v n.\n    \\]\n    Reducing modulo $m$ gives $x \\equiv a \\cdot v n \\equiv a \\cdot 1 \\equiv a\n    \\pmod m$, and reducing modulo $n$ gives $x \\equiv b \\cdot u m \\equiv b\n    \\cdot 1 \\equiv b \\pmod n$."
+}

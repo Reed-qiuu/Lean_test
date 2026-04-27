@@ -1,0 +1,10 @@
+{
+  "label": "thm:crt-uniqueness",
+  "kind": "theorem",
+  "title": "CRT uniqueness",
+  "uses": [
+    "def:pairwise-coprime"
+  ],
+  "statement": "Let $n_1, \\ldots, n_k$ be pairwise coprime integers and set\n    $N = n_1 n_2 \\cdots n_k$. If $x, y \\in \\mathbb{Z}$ satisfy\n    $x \\equiv y \\pmod{n_i}$ for every $1 \\leq i \\leq k$, then\n    $x \\equiv y \\pmod{N}$.",
+  "proof": "By hypothesis $n_i \\mid (x - y)$ for every $i$. Since the $n_i$ are\n    pairwise coprime, their product $N = \\prod_{i=1}^{k} n_i$ also divides\n    $x - y$ (a standard consequence of the fact that if $a$ and $b$ are\n    coprime and both divide $c$, then $ab \\mid c$, applied iteratively).\n    Hence $x \\equiv y \\pmod{N}$."
+}
