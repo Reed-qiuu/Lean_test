@@ -3,22 +3,6 @@
   "branch": "numina/crt-test-2",
   "source_type": "latex",
   "notes": "",
-  "entries": [
-    {
-      "label": "lem:modEq-mul-coprime",
-      "kind": "lemma",
-      "title": "Congruence modulo a product of coprime integers"
-    },
-    {
-      "label": "lem:crt-two",
-      "kind": "lemma",
-      "title": "CRT for two coprime moduli"
-    },
-    {
-      "label": "thm:crt",
-      "kind": "theorem",
-      "title": "Chinese Remainder Theorem"
-    }
-  ],
+  "entries": [],
   "leanModule": "TestProj.ChineseRemainder"
 }

@@ -1,8 +1,0 @@
-{
-  "label": "lem:modEq-mul-coprime",
-  "kind": "lemma",
-  "title": "Congruence modulo a product of coprime integers",
-  "uses": [],
-  "statement": "Let $m, n$ be coprime natural numbers and let $a, b$ be natural\n    numbers. Then\n    \\[\n        a \\equiv b \\pmod{m} \\;\\text{ and }\\; a \\equiv b \\pmod{n}\n        \\quad\\Longleftrightarrow\\quad\n        a \\equiv b \\pmod{m\\,n}.\n    \\]",
-  "proof": "The forward direction follows from the fact that if $m \\mid (a-b)$\n    and $n \\mid (a-b)$, then their least common multiple divides\n    $a-b$; since $\\gcd(m,n) = 1$, we have $\\operatorname{lcm}(m,n) =\n    mn$, hence $mn \\mid (a-b)$. The reverse direction is immediate:\n    if $mn \\mid (a-b)$ then both $m \\mid (a-b)$ and $n \\mid (a-b)$."
-}
