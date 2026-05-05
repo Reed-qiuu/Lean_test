@@ -1,0 +1,9 @@
+{
+  "label": "def:pi_quotient_mk",
+  "kind": "definition",
+  "title": "Product-of-quotients ring map",
+  "uses": [],
+  "statement": "Given a family $I : \\iota \\to \\operatorname{Ideal}(R)$, define the\n    ring homomorphism\n    \\[\n        \\varphi_I \\colon R \\longrightarrow \\prod_{i \\in \\iota} R / I_i,\n        \\qquad r \\longmapsto \\bigl(r + I_i\\bigr)_{i \\in \\iota},\n    \\]\n    obtained by bundling the canonical quotient maps $R \\to R/I_i$\n    componentwise.",
+  "proof": null,
+  "leanDeclaration": "TestProj.ChineseRemainder.piQuotientMk"
+}

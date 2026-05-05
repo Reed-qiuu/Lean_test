@@ -1,0 +1,11 @@
+{
+  "label": "lem:coprime_with_inf",
+  "kind": "lemma",
+  "title": "Coprimality with a finite intersection",
+  "uses": [
+    "def:pairwise_coprime"
+  ],
+  "statement": "Fix an index $i_0 \\in \\iota$ and assume the family $I$ is pairwise\n    coprime. Then $I_{i_0}$ is coprime to the intersection of the\n    remaining ideals:\n    \\[\n        I_{i_0} + \\bigcap_{j \\neq i_0} I_j \\;=\\; R.\n    \\]",
+  "proof": "For each $j \\neq i_0$ pick $a_j \\in I_{i_0}$ and $b_j \\in I_j$ with\n    $a_j + b_j = 1$. Expanding the product\n    $\\prod_{j \\neq i_0} (a_j + b_j) = 1$ and grouping all terms that\n    contain at least one factor $a_j$ shows that\n    $1 \\equiv \\prod_{j \\neq i_0} b_j \\pmod{I_{i_0}}$. The right-hand\n    side belongs to $\\prod_{j \\neq i_0} I_j$, hence to the intersection\n    $\\bigcap_{j \\neq i_0} I_j$. Therefore $1 \\in I_{i_0} + \\bigcap_{j\n    \\neq i_0} I_j$, which forces this sum to be all of $R$.",
+  "leanDeclaration": "TestProj.ChineseRemainder.isCoprime_iInf"
+}

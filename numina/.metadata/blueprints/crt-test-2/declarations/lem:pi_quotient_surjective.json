@@ -1,0 +1,13 @@
+{
+  "label": "lem:pi_quotient_surjective",
+  "kind": "lemma",
+  "title": "Surjectivity of $\\varphi_I$ for coprime ideals",
+  "uses": [
+    "def:pairwise_coprime",
+    "def:pi_quotient_mk",
+    "lem:coprime_with_inf"
+  ],
+  "statement": "If the family $I$ is pairwise coprime, then $\\varphi_I$ is\n    surjective. Concretely, for any tuple $(x_i)_{i \\in \\iota} \\in\n    \\prod_i R/I_i$ there exists $r \\in R$ with $r + I_i = x_i$ for\n    every $i$.",
+  "proof": "By Lemma~\\ref{lem:coprime_with_inf}, for each $i_0$ there exist\n    $a_{i_0} \\in I_{i_0}$ and $e_{i_0} \\in \\bigcap_{j \\neq i_0} I_j$\n    with $a_{i_0} + e_{i_0} = 1$. The element $e_{i_0}$ satisfies\n    $e_{i_0} \\equiv 1 \\pmod{I_{i_0}}$ and $e_{i_0} \\equiv 0 \\pmod{I_j}$\n    for $j \\neq i_0$. Given a target tuple $(x_i)$, lift each $x_i$ to\n    $\\tilde{x}_i \\in R$ and set $r = \\sum_i \\tilde{x}_i e_i$. For each\n    $j$ all summands with $i \\neq j$ vanish modulo $I_j$, while the\n    $i = j$ summand is $\\tilde{x}_j e_j \\equiv \\tilde{x}_j \\pmod{I_j}$,\n    so $r + I_j = x_j$. Hence $\\varphi_I(r) = (x_i)_i$.",
+  "leanDeclaration": "TestProj.ChineseRemainder.piQuotientMk_surjective"
+}

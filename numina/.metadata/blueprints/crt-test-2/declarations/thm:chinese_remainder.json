@@ -1,0 +1,15 @@
+{
+  "label": "thm:chinese_remainder",
+  "kind": "theorem",
+  "title": "Chinese Remainder Theorem",
+  "uses": [
+    "def:pairwise_coprime",
+    "def:pi_quotient_mk",
+    "lem:prod_eq_inf",
+    "lem:ker_pi_quotient_mk",
+    "lem:pi_quotient_surjective"
+  ],
+  "statement": "Let $R$ be a commutative ring with $1$ and let\n    $I : \\iota \\to \\operatorname{Ideal}(R)$ be a finite, pairwise\n    coprime family of ideals. Then $\\varphi_I$ descends to a ring\n    isomorphism\n    \\[\n        \\overline{\\varphi}_I \\colon\n        R \\,\\big/\\, \\bigcap_{i \\in \\iota} I_i\n        \\;\\xrightarrow{\\;\\sim\\;}\\;\n        \\prod_{i \\in \\iota} R / I_i.\n    \\]\n    Equivalently, $\\varphi_I$ is surjective with kernel\n    $\\bigcap_i I_i$, and under pairwise coprimality this intersection\n    coincides with the product $\\prod_i I_i$, so one may equally write\n    $R / \\prod_i I_i \\cong \\prod_i R / I_i$.",
+  "proof": "By Lemma~\\ref{lem:ker_pi_quotient_mk}, the kernel of $\\varphi_I$\n    is $\\bigcap_i I_i$, so the first isomorphism theorem produces an\n    injective ring homomorphism\n    $\\overline{\\varphi}_I : R / \\bigcap_i I_i \\hookrightarrow \\prod_i\n    R / I_i$. Lemma~\\ref{lem:pi_quotient_surjective} shows that\n    $\\varphi_I$ is surjective, hence so is $\\overline{\\varphi}_I$.\n    Therefore $\\overline{\\varphi}_I$ is a ring isomorphism. The\n    alternative form follows from\n    Lemma~\\ref{lem:prod_eq_inf}, which identifies\n    $\\bigcap_i I_i$ with $\\prod_i I_i$ under pairwise coprimality.",
+  "leanDeclaration": "TestProj.ChineseRemainder.chineseRemainder"
+}

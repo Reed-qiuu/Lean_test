@@ -1,0 +1,11 @@
+{
+  "label": "lem:ker_pi_quotient_mk",
+  "kind": "lemma",
+  "title": "Kernel of the product-of-quotients map",
+  "uses": [
+    "def:pi_quotient_mk"
+  ],
+  "statement": "The kernel of $\\varphi_I$ equals the intersection of the ideals:\n    \\[\n        \\ker \\varphi_I \\;=\\; \\bigcap_{i \\in \\iota} I_i.\n    \\]",
+  "proof": "For $r \\in R$, $\\varphi_I(r) = 0$ if and only if $r + I_i = 0$ in\n    $R/I_i$ for every $i$, i.e.\\ $r \\in I_i$ for every $i$. This is\n    exactly the statement $r \\in \\bigcap_i I_i$.",
+  "leanDeclaration": "TestProj.ChineseRemainder.ker_piQuotientMk"
+}

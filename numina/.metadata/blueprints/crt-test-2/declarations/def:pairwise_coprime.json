@@ -1,0 +1,9 @@
+{
+  "label": "def:pairwise_coprime",
+  "kind": "definition",
+  "title": "Pairwise coprime family of ideals",
+  "uses": [],
+  "statement": "A family $I : \\iota \\to \\operatorname{Ideal}(R)$ is \\emph{pairwise\n    coprime} if for every pair of indices $i \\neq j$ the ideals $I_i$\n    and $I_j$ are coprime, i.e.\\ $I_i + I_j = R$. Equivalently, for any\n    $i \\neq j$ there exist $a \\in I_i$ and $b \\in I_j$ with $a + b = 1$.",
+  "proof": null,
+  "leanDeclaration": "TestProj.ChineseRemainder.pairwiseCoprime"
+}

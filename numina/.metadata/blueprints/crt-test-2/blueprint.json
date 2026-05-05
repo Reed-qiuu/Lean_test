@@ -3,6 +3,42 @@
   "branch": "numina/crt-test-2",
   "source_type": "latex",
   "notes": "",
-  "entries": [],
+  "entries": [
+    {
+      "label": "def:pairwise_coprime",
+      "kind": "definition",
+      "title": "Pairwise coprime family of ideals"
+    },
+    {
+      "label": "lem:coprime_with_inf",
+      "kind": "lemma",
+      "title": "Coprimality with a finite intersection"
+    },
+    {
+      "label": "lem:prod_eq_inf",
+      "kind": "lemma",
+      "title": "Product equals intersection for coprime ideals"
+    },
+    {
+      "label": "def:pi_quotient_mk",
+      "kind": "definition",
+      "title": "Product-of-quotients ring map"
+    },
+    {
+      "label": "lem:ker_pi_quotient_mk",
+      "kind": "lemma",
+      "title": "Kernel of the product-of-quotients map"
+    },
+    {
+      "label": "lem:pi_quotient_surjective",
+      "kind": "lemma",
+      "title": "Surjectivity of $\\varphi_I$ for coprime ideals"
+    },
+    {
+      "label": "thm:chinese_remainder",
+      "kind": "theorem",
+      "title": "Chinese Remainder Theorem"
+    }
+  ],
   "leanModule": "TestProj.ChineseRemainder"
 }

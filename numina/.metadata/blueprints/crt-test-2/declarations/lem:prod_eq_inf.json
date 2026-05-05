@@ -1,0 +1,11 @@
+{
+  "label": "lem:prod_eq_inf",
+  "kind": "lemma",
+  "title": "Product equals intersection for coprime ideals",
+  "uses": [
+    "def:pairwise_coprime"
+  ],
+  "statement": "Let $I : \\iota \\to \\operatorname{Ideal}(R)$ be pairwise coprime\n    over a finite set $s \\subseteq \\iota$. Then\n    \\[\n        \\prod_{i \\in s} I_i \\;=\\; \\bigcap_{i \\in s} I_i.\n    \\]",
+  "proof": "The inclusion $\\prod_i I_i \\subseteq \\bigcap_i I_i$ holds for any\n    family of ideals because each factor $I_i$ contains the product.\n    The converse is proved by induction on $|s|$. The empty and\n    singleton cases are immediate. For the inductive step, write\n    $s = \\{i_0\\} \\sqcup s'$ and use Lemma~\\ref{lem:coprime_with_inf} to\n    obtain $a \\in I_{i_0}$ and $b \\in \\bigcap_{j \\in s'} I_j$ with\n    $a + b = 1$. Given $x \\in \\bigcap_{i \\in s} I_i$ we write\n    $x = xa + xb$. The first summand lies in $I_{i_0} \\cdot\n    \\bigcap_{j \\in s'} I_j$ since $x \\in \\bigcap_{j \\in s'} I_j$, and\n    the second lies in $I_{i_0} \\cdot \\bigcap_{j \\in s'} I_j$ since\n    $x \\in I_{i_0}$. By induction $\\bigcap_{j \\in s'} I_j = \\prod_{j\n    \\in s'} I_j$, so $x \\in I_{i_0} \\cdot \\prod_{j \\in s'} I_j =\n    \\prod_{i \\in s} I_i$.",
+  "leanDeclaration": "TestProj.ChineseRemainder.prodEqInf"
+}

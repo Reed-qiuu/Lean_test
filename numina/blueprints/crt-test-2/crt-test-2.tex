@@ -1,0 +1,168 @@
+\section{Chinese Remainder Theorem}
+
+Throughout this chapter we fix a commutative ring $R$ with $1$, a finite
+indexing type $\iota$, and a family of (two-sided) ideals
+$I_1,\dots,I_n$ of $R$, written abstractly as a function
+$I : \iota \to \operatorname{Ideal}(R)$. We say the family is
+\emph{pairwise coprime} when $I_i + I_j = R$ for all $i \neq j$. We use
+the standard notation $\prod_i I_i$ for the product ideal and
+$\bigcap_i I_i$ (equivalently $\bigsqcap_i I_i$ in Mathlib's lattice
+notation) for the intersection. The natural ring homomorphism
+\[
+  \varphi \colon R \longrightarrow \prod_{i \in \iota} R / I_i,
+  \qquad r \longmapsto (r + I_i)_{i \in \iota}
+\]
+is the central object of study.
+
+\subsection{Coprimality of ideals}
+
+\begin{definition}[Pairwise coprime family of ideals]
+    \label{def:pairwise_coprime}
+    \lean{TestProj.ChineseRemainder.pairwiseCoprime}
+    A family $I : \iota \to \operatorname{Ideal}(R)$ is \emph{pairwise
+    coprime} if for every pair of indices $i \neq j$ the ideals $I_i$
+    and $I_j$ are coprime, i.e.\ $I_i + I_j = R$. Equivalently, for any
+    $i \neq j$ there exist $a \in I_i$ and $b \in I_j$ with $a + b = 1$.
+\end{definition}
+
+\begin{lemma}[Coprimality with a finite intersection]
+    \label{lem:coprime_with_inf}
+    \uses{def:pairwise_coprime}
+    \lean{TestProj.ChineseRemainder.isCoprime_iInf}
+    Fix an index $i_0 \in \iota$ and assume the family $I$ is pairwise
+    coprime. Then $I_{i_0}$ is coprime to the intersection of the
+    remaining ideals:
+    \[
+        I_{i_0} + \bigcap_{j \neq i_0} I_j \;=\; R.
+    \]
+\end{lemma}
+\begin{proof}
+    \uses{def:pairwise_coprime}
+    For each $j \neq i_0$ pick $a_j \in I_{i_0}$ and $b_j \in I_j$ with
+    $a_j + b_j = 1$. Expanding the product
+    $\prod_{j \neq i_0} (a_j + b_j) = 1$ and grouping all terms that
+    contain at least one factor $a_j$ shows that
+    $1 \equiv \prod_{j \neq i_0} b_j \pmod{I_{i_0}}$. The right-hand
+    side belongs to $\prod_{j \neq i_0} I_j$, hence to the intersection
+    $\bigcap_{j \neq i_0} I_j$. Therefore $1 \in I_{i_0} + \bigcap_{j
+    \neq i_0} I_j$, which forces this sum to be all of $R$.
+\end{proof}
+
+\subsection{Product equals intersection}
+
+\begin{lemma}[Product equals intersection for coprime ideals]
+    \label{lem:prod_eq_inf}
+    \uses{def:pairwise_coprime}
+    \lean{TestProj.ChineseRemainder.prodEqInf}
+    Let $I : \iota \to \operatorname{Ideal}(R)$ be pairwise coprime
+    over a finite set $s \subseteq \iota$. Then
+    \[
+        \prod_{i \in s} I_i \;=\; \bigcap_{i \in s} I_i.
+    \]
+\end{lemma}
+\begin{proof}
+    \uses{def:pairwise_coprime, lem:coprime_with_inf}
+    The inclusion $\prod_i I_i \subseteq \bigcap_i I_i$ holds for any
+    family of ideals because each factor $I_i$ contains the product.
+    The converse is proved by induction on $|s|$. The empty and
+    singleton cases are immediate. For the inductive step, write
+    $s = \{i_0\} \sqcup s'$ and use Lemma~\ref{lem:coprime_with_inf} to
+    obtain $a \in I_{i_0}$ and $b \in \bigcap_{j \in s'} I_j$ with
+    $a + b = 1$. Given $x \in \bigcap_{i \in s} I_i$ we write
+    $x = xa + xb$. The first summand lies in $I_{i_0} \cdot
+    \bigcap_{j \in s'} I_j$ since $x \in \bigcap_{j \in s'} I_j$, and
+    the second lies in $I_{i_0} \cdot \bigcap_{j \in s'} I_j$ since
+    $x \in I_{i_0}$. By induction $\bigcap_{j \in s'} I_j = \prod_{j
+    \in s'} I_j$, so $x \in I_{i_0} \cdot \prod_{j \in s'} I_j =
+    \prod_{i \in s} I_i$.
+\end{proof}
+
+\subsection{The product map and its kernel}
+
+\begin{definition}[Product-of-quotients ring map]
+    \label{def:pi_quotient_mk}
+    \lean{TestProj.ChineseRemainder.piQuotientMk}
+    Given a family $I : \iota \to \operatorname{Ideal}(R)$, define the
+    ring homomorphism
+    \[
+        \varphi_I \colon R \longrightarrow \prod_{i \in \iota} R / I_i,
+        \qquad r \longmapsto \bigl(r + I_i\bigr)_{i \in \iota},
+    \]
+    obtained by bundling the canonical quotient maps $R \to R/I_i$
+    componentwise.
+\end{definition}
+
+\begin{lemma}[Kernel of the product-of-quotients map]
+    \label{lem:ker_pi_quotient_mk}
+    \uses{def:pi_quotient_mk}
+    \lean{TestProj.ChineseRemainder.ker_piQuotientMk}
+    The kernel of $\varphi_I$ equals the intersection of the ideals:
+    \[
+        \ker \varphi_I \;=\; \bigcap_{i \in \iota} I_i.
+    \]
+\end{lemma}
+\begin{proof}
+    \uses{def:pi_quotient_mk}
+    For $r \in R$, $\varphi_I(r) = 0$ if and only if $r + I_i = 0$ in
+    $R/I_i$ for every $i$, i.e.\ $r \in I_i$ for every $i$. This is
+    exactly the statement $r \in \bigcap_i I_i$.
+\end{proof}
+
+\begin{lemma}[Surjectivity of $\varphi_I$ for coprime ideals]
+    \label{lem:pi_quotient_surjective}
+    \uses{def:pairwise_coprime, def:pi_quotient_mk, lem:coprime_with_inf}
+    \lean{TestProj.ChineseRemainder.piQuotientMk_surjective}
+    If the family $I$ is pairwise coprime, then $\varphi_I$ is
+    surjective. Concretely, for any tuple $(x_i)_{i \in \iota} \in
+    \prod_i R/I_i$ there exists $r \in R$ with $r + I_i = x_i$ for
+    every $i$.
+\end{lemma}
+\begin{proof}
+    \uses{lem:coprime_with_inf}
+    By Lemma~\ref{lem:coprime_with_inf}, for each $i_0$ there exist
+    $a_{i_0} \in I_{i_0}$ and $e_{i_0} \in \bigcap_{j \neq i_0} I_j$
+    with $a_{i_0} + e_{i_0} = 1$. The element $e_{i_0}$ satisfies
+    $e_{i_0} \equiv 1 \pmod{I_{i_0}}$ and $e_{i_0} \equiv 0 \pmod{I_j}$
+    for $j \neq i_0$. Given a target tuple $(x_i)$, lift each $x_i$ to
+    $\tilde{x}_i \in R$ and set $r = \sum_i \tilde{x}_i e_i$. For each
+    $j$ all summands with $i \neq j$ vanish modulo $I_j$, while the
+    $i = j$ summand is $\tilde{x}_j e_j \equiv \tilde{x}_j \pmod{I_j}$,
+    so $r + I_j = x_j$. Hence $\varphi_I(r) = (x_i)_i$.
+\end{proof}
+
+\subsection{Main theorem}
+
+\begin{theorem}[Chinese Remainder Theorem]
+    \label{thm:chinese_remainder}
+    \uses{def:pairwise_coprime, def:pi_quotient_mk, lem:prod_eq_inf,
+        lem:ker_pi_quotient_mk, lem:pi_quotient_surjective}
+    \lean{TestProj.ChineseRemainder.chineseRemainder}
+    Let $R$ be a commutative ring with $1$ and let
+    $I : \iota \to \operatorname{Ideal}(R)$ be a finite, pairwise
+    coprime family of ideals. Then $\varphi_I$ descends to a ring
+    isomorphism
+    \[
+        \overline{\varphi}_I \colon
+        R \,\big/\, \bigcap_{i \in \iota} I_i
+        \;\xrightarrow{\;\sim\;}\;
+        \prod_{i \in \iota} R / I_i.
+    \]
+    Equivalently, $\varphi_I$ is surjective with kernel
+    $\bigcap_i I_i$, and under pairwise coprimality this intersection
+    coincides with the product $\prod_i I_i$, so one may equally write
+    $R / \prod_i I_i \cong \prod_i R / I_i$.
+\end{theorem}
+\begin{proof}
+    \uses{lem:prod_eq_inf, lem:ker_pi_quotient_mk,
+        lem:pi_quotient_surjective}
+    By Lemma~\ref{lem:ker_pi_quotient_mk}, the kernel of $\varphi_I$
+    is $\bigcap_i I_i$, so the first isomorphism theorem produces an
+    injective ring homomorphism
+    $\overline{\varphi}_I : R / \bigcap_i I_i \hookrightarrow \prod_i
+    R / I_i$. Lemma~\ref{lem:pi_quotient_surjective} shows that
+    $\varphi_I$ is surjective, hence so is $\overline{\varphi}_I$.
+    Therefore $\overline{\varphi}_I$ is a ring isomorphism. The
+    alternative form follows from
+    Lemma~\ref{lem:prod_eq_inf}, which identifies
+    $\bigcap_i I_i$ with $\prod_i I_i$ under pairwise coprimality.
+\end{proof}

@@ -1,1 +1,2 @@
 - [2026-05-05] Started: drafting Chinese Remainder Theorem blueprint (no Lean).
+- [2026-05-05] Completed: CRT blueprint drafted in crt-test-2.tex with 7 metadata entries (2 defs, 4 lemmas, 1 theorem); no Lean files modified.
